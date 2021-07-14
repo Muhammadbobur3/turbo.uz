@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="announcements">
+        <div class="container">
+            <ul class="announcement-list" id="list">
+                <% for(let item of bookmark){ %>
+                <li class="announcement-item" id="<%=item.announcement_id%>">
+                    <img class="announcement-img" src="<%= item.announcement_img%>" alt="img" width="270" height="200">
+                    <div class="ann-inner">
+                        <div class="ann-title-like">
+                            <h3 class="announcement-title"><%= item.announcement_title%></h3>
+                            <button id="<= item.announcement_id %>" class="ann-save-btn">
+                                <img src="/images/like.svg" alt="save icon" width="25" height="25">
+                            </button>
+                        </div>
+                        <p class="announcement-content"><%= item.announcement_content%></p>
+
+                        <div class="announcement-tel-pr">
+                            <a class="announcement-link ann-links" href="tel:<%= item.phone_number %>">
+                                <img class="ann-icon" src="/images/call.svg" alt="" width="20" height="20">
+                                <p class="ann-text"><%= item.phone_number %></p>
+                            </a>
+                            <strong class="announcement-price">$<%= item.announcement_price%><span class="sub-price">  /Days</span></strong>
+                        </div>
+                    </div>
+                </li>
+                <% }%>
+            </ul>
+            <div class="pagenumbers"></div>
+        </div>
+    </section>
+
+    
+</body>
+</html>

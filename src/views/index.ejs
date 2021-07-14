@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Turbo</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a class="header-logo" href="/">
+                <img src="/images/logo.png" alt="" width="200" height="60">
+            </a>
+
+            <ul class="header-list">
+                <li class="header-item">
+                    <a class="header-link" href="/">Bosh sahifa</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announcements">E'lonlar</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announce">E'lon berish</a>
+                </li>
+
+
+                <li class="nav-item block">
+                    <button class="item-btn">logout</button>
+                </li>
+
+            </ul>
+            <button class="item-hamburger-nav">
+                <img class="item-menu-img" src="/images/menu_icon.png" alt="" width="25" height="25">
+            </button>
+        </div>
+    </header>
+
+
+
+    <section class="intro">
+        <div class="container intro-container">
+            <div class="inner">
+                <span class="welcome">Welcome</span>
+                <h1 class="intro-title">Turbo</h1>
+                <p class="intro-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <a href="#about" class="intro-btn">About us</a>
+            </div>
+
+            <img class="intro-right-img" src="/images/jeep.png" alt="" width="700" height="350">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-inner">
+                <h2 class="about-title">About us</h2>
+                <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod..</p>
+            </div>
+
+            <img class="about-img" src="/images/about_us.png" alt="car image" width="730" height="434">
+        </div>
+    </section>
+
+    <section class="ourcars">
+        <div class="container ourcars-container">
+            <img class="ourcars-img" src="/images/about_us_2.png" alt="ourcars-img" width="713" height="382">
+
+            <div class="ourcars-inner">
+                <h2 class="about-title">Our cars</h2>
+                <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod..</p>
+                <a href="/announcements" class="our-btn">Cars</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="blue-div">
+        <img class="blue" aria-label="false" src="/images/cross_blue.png" alt="" width="1440" height="300">
+    </div>
+
+    <section class="choose">
+        <div class="container">
+            <h2 class="choose-title">Why choose us</h2>
+
+            <ul class="choose-list">
+                <li class="choose-item">
+                    <h3 class="choose-mini-title choose-mini-title--easy">FINANCING MADE EASY</h3>
+                    <p class="choose-text">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                </li>
+
+                <li class="choose-item">
+                    <h3 class="choose-mini-title choose-mini-title--busy">FINANCING MADE EASY</h3>
+                    <p class="choose-text">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                </li>
+
+                <li class="choose-item">
+                    <h3 class="choose-mini-title choose-mini-title--frezy">FINANCING MADE EASY</h3>
+                    <p class="choose-text">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-title">Contact us</h2>
+            <div class="contact-inner">
+                <div class="left-wrapper">
+                    <form class="form" method="POST" action="">
+                        <input class="form-name" type="text" name="name" id="" placeholder="Name">
+                        <input class="form-email" type="email" name="email" id="" placeholder="Email" required>
+                        <input class="form-tel" type="tel" name="phone_number" id="" placeholder="Phone number">
+                        <textarea class="form-content" name="content_query" cols="30" rows="10" placeholder="Message" required></textarea>
+                        <button class="form-btn">Send</button>
+                    </form>
+                </div>
+
+                <div class="right-wrapper">
+                    <a class="right-wrapper-map" href="" target="_blank">
+                        <iframe class="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10078.332647694222!2d69.23625970455257!3d41.323954085051476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x23ac4a5a705b84ab!2sNajot%20Ta&#39;lim!5e0!3m2!1suz!2s!4v1624450064744!5m2!1suz!2s" width="540" height="577" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">© 2021 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const block = document.querySelector('.block')
+        const btn = document.querySelector('.item-btn')
+        const link = document.querySelector('.header-link')
+
+        const user = window.localStorage.getItem('user')
+
+        btn.addEventListener('click', (e) => {
+            window.localStorage.removeItem('user')
+            window.location.href = '/'
+        })
+
+        if (!user) {
+            block.style.display = 'none'
+        }
+        else {
+            block.style.display = 'block'
+        }
+
+        const elMenuToggler = document.querySelector('.item-hamburger-nav');
+        const elMenu = document.querySelector('.header-list');
+
+        elMenuToggler.addEventListener('click', function ()
+        {
+            elMenu.classList.toggle('header-list--open');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Turbo.uz</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__container">
+            <a class="header-logo" href="/">
+                <img src="/images/logo.png" alt="" width="200" height="60">
+            </a>
+
+            <ul class="header-list">
+                <li class="header-item">
+                    <a class="header-link" href="/">Bosh sahifa</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announcements">E'lonlar</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announce">E'lon berish</a>
+                </li>
+
+                <li class="nav-item block">
+                    <button class="item-btn">logout</button>
+                </li>
+
+            </ul>
+            <button class="item-hamburger-nav">
+                <img class="item-menu-img" src="/images/menu_icon.png" alt="" width="25" height="25">
+            </button>
+        </div>
+    </header>
+
+    <section class="login">
+        <form class="login-form" action="">
+
+            <label>
+                <p class="login-name-label">Foydalanuvchining nomi</p>
+                <input class="login-name" type="text" name="name" required placeholder="Username">
+            </label>
+            <label>
+                <p class="login-passw-label">Foydalanuvchi paroli</p>
+                <input class="login-password" type="password" name="password" required placeholder="Password">
+            </label>
+            <div class="login-inner">
+                <button class="login-btn" type="submit">submit</button>
+                <a class="login-link" href="/signup">Ro'yhatdan o'tish</a>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        const form = document.querySelector('.login-form')
+        const nameInput = document.querySelector('.login-name')
+        const passwordInp = document.querySelector('.login-password')
+
+        form.addEventListener('submit', async (evt) => {
+            evt.preventDefault()
+
+            const response = await fetch('http://localhost:4001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-type' :'application/json'
+                },
+                body: JSON.stringify({
+                    username: nameInput.value,
+                    password: passwordInp.value
+                })
+            })
+
+            const data = await response.json()
+
+            if (data) {
+                window.localStorage.setItem('user', JSON.stringify(data))
+                window.location.href = '/'
+            }
+            if (!data) {
+                alert('Username yoki parol xato')
+            }
+        })
+
+        const block = document.querySelector('.block')
+        const btn = document.querySelector('.item-btn')
+
+        const user = window.localStorage.getItem('user')
+
+        btn.addEventListener('click', (e) => {
+            window.localStorage.removeItem('user')
+            window.location.href = '/'
+        })
+
+        if (!user) {
+            block.style.display = 'none'
+        }
+        else {
+            window.location.href = '/'
+            block.style.display = 'block'
+        }
+
+        const elMenuToggler = document.querySelector('.item-hamburger-nav');
+        const elMenu = document.querySelector('.header-list');
+
+        elMenuToggler.addEventListener('click', function ()
+        {
+            elMenu.classList.toggle('header-list--open');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Turbo.uz</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__container">
+            <a class="header-logo" href="/">
+                <img src="/images/logo.png" alt="" width="200" height="60">
+            </a>
+
+            <ul class="header-list">
+                <li class="header-item">
+                    <a class="header-link" href="/">Bosh sahifa</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announcements">E'lonlar</a>
+                </li>
+
+                <li class="header-item">
+                    <a class="header-link" href="/announce">E'lon berish</a>
+                </li>
+
+                <li class="nav-item block">
+                    <button class="item-btn">logout</button>
+                </li>
+
+            </ul>
+            <button class="item-hamburger-nav">
+                <img class="item-menu-img" src="/images/menu_icon.png" alt="" width="25" height="25">
+            </button>
+        </div>
+    </header>
+
+    <section class="search-form-section">
+    <div class="container search-container">
+        <form class="search-form" method="GET" action="">
+            <input class="search-input" type="text" name="search" placeholder="Search: Tesla">
+            <button class="search-btn">
+                <img src="/images/search_icon.png" alt="search icon" width="25" height="25">
+            </button>
+        </form>
+    </div>
+    </section>
+
+    <section class="category">
+        <div class="container category-container">
+            <ul class="category-list">
+                <% for (let item of list) { %>
+                    <li class="category-item">
+                        <a class="category-link" href="/categorie/<%=item.category_id %>"><%= item.category_name %> </a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="announcements">
+    <div class="container">
+        <ul class="announcement-list" id="list">
+            <% for(let item of data){ %>
+                <li class="announcement-item" id="<%=item.announcement_id%>">
+                    <img class="announcement-img" src="<%= item.announcement_img%>" alt="img" width="270" height="200">
+                    <div class="ann-inner">
+                        <div class="ann-title-like">
+                            <h3 class="announcement-title"><%= item.announcement_title%></h3>
+                            <a class="announcement-info-link" href="/item/<%= item.announcement_id %>">info</a>
+                        </div>
+                        <p class="announcement-content"><%= item.announcement_content%></p>
+
+                        <div class="announcement-tel-pr">
+                            <a class="announcement-link ann-links" href="tel:<%= item.phone_number %>">
+                                <img class="ann-icon" src="/images/call.svg" alt="" width="20" height="20">
+                            <p class="ann-text"><%= item.phone_number %></p>
+                            </a>
+                            <strong class="announcement-price">$<%= item.announcement_price%><span class="sub-price">  /Days</span></strong>
+                        </div>
+
+                    </div>
+                </li>
+                <% }%>
+
+            </ul>
+        </div>
+
+    <div class="container">
+    </div>
+
+        </section>
+    <script>
+
+        const btn = document.querySelector('.item-btn')
+        const block = document.querySelector('.block')
+
+        console.log(btn);
+
+        const user = window.localStorage.getItem('user')
+
+        btn.addEventListener('click', (e) => {
+            window.localStorage.removeItem('user')
+            window.location.href = '/'
+        })
+
+        if (!user) {
+            block.style.display = 'none'
+        }
+        else {
+            block.style.display = 'block'
+        }
+
+        const elMenuToggler = document.querySelector('.item-hamburger-nav');
+        const elMenu = document.querySelector('.header-list');
+
+        elMenuToggler.addEventListener('click', function ()
+        {
+            elMenu.classList.toggle('header-list--open');
+        });
+
+    </script>
+
+</body>
+</html>

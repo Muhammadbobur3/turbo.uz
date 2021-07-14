@@ -1,0 +1,24 @@
+{
+  "name": "turbo-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "gitignore": "^0.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
